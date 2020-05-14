@@ -1,29 +1,31 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+import BydMallPlatform from '@/views/BydMallPlatform';
+Vue.use(VueRouter);
 
-Vue.use(VueRouter)
+const rootRoute = {
+  path: '/',
+  redirect: '/bydmall',
+};
 
-  const routes = [
-  {
-    path: '/',
-    name: 'Home',
-    component: Home
-  },
-  {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  }
-]
+// 业务路由配置
+const routeConfig = {
+  path: '/bydmall',
+  name: 'bydmall',
+  component: BydMallPlatform,
+  children: [
+    {
+      path: 'home',
+      name: 'Home',
+      component: () => import('@/views/home/Home'),
+      children: [],
+    },
+  ],
+};
 
+// 创建路由实例
 const router = new VueRouter({
-  mode: 'history',
-  base: process.env.BASE_URL,
-  routes
-})
+  routes: [rootRoute, routeConfig],
+});
 
-export default router
+export default router;

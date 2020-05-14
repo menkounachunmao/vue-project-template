@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="bydmallplatform">
     <router-view />
   </div>
 </template>
