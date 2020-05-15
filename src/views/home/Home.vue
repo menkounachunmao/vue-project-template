@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <el-container>
-      <el-header a="" b="" c="">
+      <el-header>
         <home-header />
       </el-header>
       <el-main>
@@ -21,13 +21,11 @@ export default {
   name: 'Home',
   components: { HomeHeader, HomeMain, HomeFooter },
   data() {
-    return {
-      title: 'cs',
-    };
+    return {};
   },
 };
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 .el-header,
 .el-footer {
   background-color: #b3c0d1;

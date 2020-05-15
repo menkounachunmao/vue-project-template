@@ -4,7 +4,7 @@
 
 import Vue from 'vue';
 
-const requireComponent = require.context(
+let requireComponent = require.context(
   // Look for files in the current directory
   '.',
   // Do not look in subdirectories
@@ -16,7 +16,7 @@ const requireComponent = require.context(
 // For each matching file name...
 requireComponent.keys().forEach((fileName) => {
   // Get the component config
-  const componentConfig = requireComponent(fileName);
+  let componentConfig = requireComponent(fileName);
   // Get the PascalCase version of the component name
   // const componentName = fileName
   //     // Remove the "./_" from the beginning
@@ -31,7 +31,7 @@ requireComponent.keys().forEach((fileName) => {
   //     .join('');
 
   // 修改为从组件配置中获取组件名
-  const component = componentConfig.default || componentConfig;
+  let component = componentConfig.default || componentConfig;
   // Globally register the component
   Vue.component(component.name, component);
 });

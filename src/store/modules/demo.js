@@ -1,21 +1,21 @@
 const ADD_COUNT = 'ADD_COUNT';
-const state = {
+let state = {
   count: 0,
 };
 
-const actions = {
+let actions = {
   addCount({ commit }) {
     commit('ADD_COUNT');
   },
 };
 
-const mutations = {
+let mutations = {
   [ADD_COUNT](state) {
     state.count++;
   },
 };
 
-const getters = {};
+let getters = {};
 
 export default {
   namespaced: true,

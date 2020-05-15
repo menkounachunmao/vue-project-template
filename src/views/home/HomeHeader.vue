@@ -1,8 +1,8 @@
 <template>
   <div>
     <el-menu
-      :default-active="activeIndex"
       class="el-menu-demo"
+      :default-active="activeIndex"
       mode="horizontal"
       @select="handleSelect"
     >
@@ -28,6 +28,7 @@
 </template>
 
 <script>
+import { getDemoData } from '../../api/module-api/common.api';
 export default {
   data() {
     return {
@@ -37,6 +38,11 @@ export default {
   },
   methods: {
     handleSelect(key, keyPath) {
+      const params = {};
+      getDemoData(params).then((res) => {
+        debugger;
+        console.log(res);
+      });
       console.log(key, keyPath);
     },
   },

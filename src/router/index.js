@@ -3,13 +3,13 @@ import VueRouter from 'vue-router';
 import BydMallPlatform from '@/views/BydMallPlatform';
 Vue.use(VueRouter);
 
-const rootRoute = {
+const ROOT_ROUTE = {
   path: '/',
-  redirect: '/bydmall',
+  redirect: '/bydmall/home',
 };
 
 // 业务路由配置
-const routeConfig = {
+const ROUTE_CONFIG = {
   path: '/bydmall',
   name: 'bydmall',
   component: BydMallPlatform,
@@ -24,8 +24,8 @@ const routeConfig = {
 };
 
 // 创建路由实例
-const router = new VueRouter({
-  routes: [rootRoute, routeConfig],
+let router = new VueRouter({
+  routes: [ROOT_ROUTE, ROUTE_CONFIG],
 });
 
 export default router;

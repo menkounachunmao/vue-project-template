@@ -5,8 +5,8 @@
  * @param contentType 文件类型
  */
 export function downloadFile(data, fileName, contentType) {
-  const blob = new Blob([data], { type: contentType });
-  const url = window.URL.createObjectURL(blob);
+  let blob = new Blob([data], { type: contentType });
+  let url = window.URL.createObjectURL(blob);
   // 打开新窗口方式进行下载
   // 以动态创建a标签进行下载
   if (window.navigator.msSaveBlob) {
@@ -18,10 +18,10 @@ export function downloadFile(data, fileName, contentType) {
     }
   } else {
     // 其他浏览器
-    const a = document.createElement('a');
+    let a = document.createElement('a');
     a.href = url;
     a.download = fileName; // 设置行为为下载而不是预览
-    const evt = document.createEvent('MouseEvents'); // 解决firefox手动触发点击事件无效
+    let evt = document.createEvent('MouseEvents'); // 解决firefox手动触发点击事件无效
     evt.initEvent('click', true, true);
     a.dispatchEvent(evt);
     window.URL.revokeObjectURL(url);
